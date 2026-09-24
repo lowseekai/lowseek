@@ -1,0 +1,147 @@
+@import "qr.less";
+
+.ReferralAdmin {
+  // FieldSet renders as a <div class="FieldSet"> (not a <fieldset>), so the
+  // section gap must target the class. This is the single source of spacing
+  // between sections; trailing margins inside each section are zeroed below so
+  // every section break is an identical, comfortable gap.
+  .FieldSet {
+    margin-bottom: 34px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Uniform vertical rhythm for every setting block in the panel.
+  .Form-group {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    > label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+  }
+
+  .ReferralAdmin-help {
+    color: var(--muted-color);
+    margin: 2px 0 12px;
+
+    // When a section ends on its help text (e.g. General), don't let it add
+    // extra space on top of the section gap.
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ReferralAdmin-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2px;
+  }
+
+  .ReferralAdmin-groupRules {
+    display: grid;
+    gap: 10px;
+  }
+
+  .ReferralAdmin-groupRulesHeader,
+  .ReferralAdmin-groupRule {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 140px 140px;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .ReferralAdmin-groupRulesHeader {
+    color: var(--muted-color);
+    font-size: 87%;
+    font-weight: 600;
+  }
+
+  .ReferralAdmin-groupRule .Switch {
+    margin: 0;
+  }
+
+  .ReferralAdmin-numberInput {
+    max-width: 120px;
+  }
+
+  .ReferralAdmin-inviteLink {
+    .FormControl {
+      max-width: 560px;
+    }
+  }
+
+  .ReferralAdmin-create {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    .ReferralAdmin-create-label {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .Form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .ReferralAdmin-codeChip {
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .ReferralAdmin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+
+    th,
+    td {
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--control-bg);
+      vertical-align: middle;
+    }
+
+    th {
+      font-size: 87%;
+      font-weight: 600;
+      color: var(--muted-color);
+    }
+
+    td:last-child,
+    th:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+  }
+
+  .ReferralAdmin-expired {
+    color: var(--alert-error-color, #d9534f);
+  }
+
+  .ReferralAdmin-empty {
+    color: var(--muted-color);
+    margin-top: 16px;
+  }
+}
+
+// The campaign-table actions cell holds the QR and delete buttons side by side.
+.ReferralAdmin-actions {
+  white-space: nowrap;
+
+  .Button + .Button {
+    margin-left: 4px;
+  }
+}

@@ -1,0 +1,138 @@
+linkrobins-referral:
+  forum:
+    profile:
+      tab: 邀请
+      invite_code_title: 邀请码中心
+      invite_code_help: 通过邀请码邀请新用户加入论坛。每个邀请码只能使用一次。
+      copy: 复制
+      copy_link: 复制邀请链接
+      qr_button: 二维码
+      channel_legacy: 用户组邀请码
+      channel_group: 用户组邀请码
+      channel_purchase: 积分购买
+      channel_campaign: 活动邀请码
+      used: 已使用
+      expired: 已过期
+      available: 可使用
+      uses: "{count} 次使用"
+      expires_at: "有效期至：{date}"
+      no_expiry: 永不过期
+      group_quota: "可用用户组邀请码：{current} / {max}"
+      generate: 生成邀请码
+      access_title: 获取邀请码
+      group_channel_title: 用户组资格
+      group_channel_help: "符合管理员设置的用户组条件时，你可以手动生成邀请码。"
+      group_channel_expiry: "每个邀请码有效期：{hours} 小时"
+      group_channel_no_expiry: 每个邀请码永不过期
+      group_channel_unavailable: 当前没有可生成的邀请码资格。
+      purchase_summary: "购买邀请码：{price} {currency}"
+      daily_remaining: "今日还可购买 {remaining} 个"
+      purchase: 使用积分购买
+      purchase_channel_title: 积分购买
+      purchase_channel_help: 使用积分购买邀请码，购买后立即获得。
+      purchase_channel_unavailable: 当前未开放积分购买邀请码。
+      purchase_balance: "当前积分：{balance} {currency}"
+      purchase_expiry: "每个邀请码有效期：{hours} 小时"
+      purchase_no_expiry: 每个邀请码永不过期
+      my_codes: 我的邀请码
+      no_codes: 你还没有邀请码，请先在上方选择一种方式获取。
+      total_referrals: 成功邀请人数
+      no_referrals: 暂无成功邀请
+      table_code: 邀请码
+      table_source: 来源
+      table_status: 状态
+      table_validity: 有效期
+      table_actions: 操作
+    sign_up:
+      invite_code_label: 邀请码
+      invite_code_label_required: 邀请码（必填）
+      invite_code_placeholder: 请输入邀请码
+      get_invite_text: 还没有邀请码？
+      get_invite_link: 点击获取
+    user_card:
+      referrals_singular: "{count} 位成功邀请"
+      referrals_plural: "{count} 位成功邀请"
+    notifications:
+      registered_text: "{name} 使用你的邀请码注册了"
+      someone: 某位用户
+      group_label: 邀请
+    settings:
+      notify_registered_label: 有人使用你的邀请码注册
+  admin:
+    settings:
+      title: 基本设置
+      require_label: 注册时要求填写邀请码
+      require_help: 启用后，用户必须填写有效的邀请码才能完成注册。
+      get_invite_enabled_label: 启用“获取邀请码”提示
+      get_invite_enabled_help: 启用后，注册页会在邀请码输入框下方显示获取邀请码链接。
+      get_invite_url_label: 获取邀请码链接
+      get_invite_url_help: 支持站内路径（例如 /p/5-get-invite-code）或完整的 http/https 链接。
+      get_invite_url_placeholder: 请输入获取邀请码页面链接
+      enabled: 已启用
+      disabled: 已停用
+    eligibility:
+      title: 邀请码生成资格
+      help: 设置哪些用户可以生成邀请码。用户同时属于多个配置用户组时，使用邀请码数量最高的用户组规则。
+      groups_label: 允许的用户组
+      groups_help: 选择后，只有属于这些用户组的用户才能生成邀请码。未配置用户组时，用户不能通过用户组生成邀请码。
+      min_posts_label: 最少发帖数
+      min_age_label: 账号最少注册天数
+      whitelist_label: 白名单
+      whitelist_help: 无论其他规则如何设置，白名单中的用户名始终拥有邀请码资格。用户名可用逗号、空格或换行分隔。
+    campaign:
+      title: 活动邀请码
+      help: 创建不绑定具体用户的独立邀请码，适合社交媒体或营销活动。此类邀请码不会记录邀请人，但会统计使用次数。
+      label_label: 名称
+      label_placeholder: 例如：微博推广
+      expiry_label: 失效日期（选填）
+      create: 创建邀请码
+      none: 暂无活动邀请码
+      no_label: 未命名
+      col_code: 邀请码
+      col_label: 名称
+      col_uses: 使用次数
+      col_expiry: 失效日期
+      no_expiry: 永不过期
+      expired: 已过期
+      delete: 删除
+      qr: 显示二维码
+      confirm_delete: 确定删除此活动邀请码吗？删除后，用户将无法再使用它注册。
+    purchase:
+      title: 积分购买邀请码
+      help: 允许用户使用积分余额购买只能使用一次的邀请码。
+      enabled_label: 启用积分购买
+      price_label: 每个邀请码单价
+      daily_limit_label: 单日购买上限
+      daily_limit_help: 填写 0 表示不限制。上限按照北京时间每天零点重置。
+      expiry_label: 邀请码有效期（小时）
+      expiry_help: 填写 0 表示永不过期。时间按照北京时间计算。
+      reward_label: 邀请人奖励
+      reward_help: 仅在成功注册后奖励给邀请人。
+    group_rules:
+      title: 用户组邀请码配额
+      help: 用户同时属于多个配置用户组时，采用邀请码数量最高的用户组规则。已过期或已使用的邀请码会释放配额，但需要用户手动生成新的邀请码。
+      group_label: 用户组
+      quantity_label: 最多可用邀请码数量
+      expiry_label: 有效期（小时）
+      expiry_help: 填写 0 表示永不过期。
+  lib:
+    qr:
+      title: "邀请码二维码：{code}"
+      download: 下载 PNG
+  api:
+    invalid_expiry: 失效日期无效。
+    label_too_long: 名称过长。
+    group_quota_reached: 你没有剩余的用户组邀请码配额。
+    purchase_disabled: 当前未启用积分购买邀请码。
+    point_system_unavailable: 积分系统不可用。
+    purchase_not_configured: 邀请码购买功能尚未配置完成。
+    daily_limit_reached: 你已达到今日的邀请码购买上限。
+    insufficient_points: 你的积分不足，无法购买邀请码。
+  email:
+    registered_subject: "{name} 使用你的邀请码注册了"
+    registered_body: "有新用户注册了：{name} 使用你的邀请码加入了论坛。"
+    view_profile: 查看其个人资料
+    someone: 某位用户
+  validation:
+    required: 注册时必须填写邀请码。
+    invalid: 邀请码无效、已使用或已过期。

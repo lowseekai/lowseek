@@ -1,0 +1,43 @@
+lowseekai-money-rewards:
+    admin:
+        settings:
+            preselection: Pre-selected point amounts (comma-separated, optional)
+            min: Minimum points for custom amounts
+            max: Maximum points for custom amounts
+        permissions:
+            seeMoneyRewardHistory: See other users' point reward history
+            rewardWithMoney: Reward other users with points
+            customAmounts: Choose custom point amounts for rewards
+            createMoney: Create points in rewards
+    forum:
+        modal:
+            title: Reward post
+            targetPrefix: 'Reward post #{number} by '
+            targetSuffix: ''
+            optionCustom: Custom amount
+            balance: 'Your balance: {amount}'
+            label:
+                custom: Custom point amount
+                create: Create points instead of subtracting from my balance
+                comment: Comment (public)
+            submit: Send reward
+            success: The point reward has been sent to the post author!
+        profile:
+            nav: Point rewards
+            title: Point rewards
+        post:
+            action: Reward with points
+            disallowedOwn: You cannot reward your own posts.
+            disallowedOther: You cannot reward this post. The author may be anonymous or deleted.
+            section: Point rewards
+        record:
+            from: from
+            to: to
+            post: 'for <a>post #{number}</a> in discussion "{title}"'
+            comment: 'Comment:'
+    api:
+        error:
+            invalidAmount: The point amount is invalid.
+            notEnoughFunds: Not enough points.
+            invalidRecipient: This post cannot receive a reward.
+            systemDisabled: The point system is currently disabled.

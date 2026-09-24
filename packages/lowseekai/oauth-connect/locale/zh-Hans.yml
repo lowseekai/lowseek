@@ -1,0 +1,298 @@
+lowseekai-oauth-connect:
+  email:
+    application_submitted_subject: 有新的 OAuth 应用等待审核
+    application_submitted_title: 新的应用接入申请
+    application_submitted_body: 应用“{application}”已提交 OAuth 接入申请。
+    application_reviewed_subject: OAuth 应用审核结果
+    application_reviewed_title: 应用审核完成
+    application_reviewed_body: 你的应用“{application}”已{status}。
+  admin:
+    title: OAuth 授权中心
+    metadata_title: OAuth 授权中心
+    description: 将当前 Flarum 论坛变成 OAuth2 授权中心。
+    endpoint_panel_title: OAuth2 接口地址
+    endpoints:
+      discovery: OpenID 自动发现
+      jwks: JWKS 公钥集
+      authorization: 授权地址
+      token: 令牌地址
+      user_info: 用户信息
+      user_info_alias: 用户信息别名
+    secret:
+      title: 客户端密钥已生成
+      help: 该密钥会以哈希形式保存，并且只显示这一次，请现在复制保存。
+      copy: 复制
+      dismiss: 关闭
+    create_client_title: 创建 OAuth2 客户端
+    clients_title: 最近客户端
+    clients_page_title: 客户端管理
+    clients_page_description: 查看、筛选并管理 OAuth2 客户端。
+    clients_all_title: 全部客户端
+    loading: 加载中...
+    no_clients: 还没有创建 OAuth2 客户端。
+    no_clients_filtered: 当前筛选条件下没有客户端。
+    authorizations_title: 最近授权记录
+    authorizations_page_title: 授权记录管理
+    authorizations_page_description: 查看、筛选并撤销 OAuth2 用户授权。
+    authorizations_all_title: 全部授权记录
+    no_authorizations: 还没有用户授权过客户端。
+    no_authorizations_filtered: 当前筛选条件下没有授权记录。
+    filters:
+      title: 筛选
+      client: 客户端
+      all_clients: 全部客户端
+      status: 状态
+      all_statuses: 全部状态
+      enabled_only: 已启用
+      disabled_only: 已禁用
+      revoked_only: 已撤销
+      search: 搜索用户
+      search_placeholder: 用户名、邮箱或用户 ID
+      search_client: 搜索客户端
+      search_client_placeholder: 名称、客户端 ID 或主页 URL
+      per_page: 每页数量
+    pagination:
+      summary: 共 {total} 条，第 {page} / {pages} 页
+      first: 首页
+      prev: 上一页
+      page_counter: 第 {page} / {pages} 页
+      next: 下一页
+      last: 尾页
+    table:
+      client: 客户端
+      redirect_uris: 回调地址
+      scopes: 授权范围
+      status: 状态
+      actions: 操作
+      user: 用户
+      authorized: 授权时间
+    status:
+      enabled: 已启用
+      disabled: 已禁用
+      active: 有效
+      revoked: 已撤销 {date}
+    actions:
+      edit: 编辑
+      reset_secret: 重置密钥
+      disable: 禁用
+      enable: 启用
+      delete: 删除
+      cancel: 取消
+      revoke: 撤销
+      view_all_clients: 查看全部客户端
+      view_all_authorizations: 查看全部授权记录
+      back_to_settings: 返回设置
+      apply_filters: 应用筛选
+      reset_filters: 重置
+      refresh: 刷新
+    form:
+      name: 名称
+      homepage_url: 主页 URL
+      icon_url: 图标 URL
+      enabled: 启用状态
+      oidc_enabled: 为该客户端启用 OpenID Connect
+      oidc_help: 仅在该客户端需要使用 OIDC 登录时启用；普通 OAuth2 客户端保持关闭即可。
+      description: 描述
+      redirect_uris: 回调地址
+      redirect_uris_help: 每行填写一个完整且精确匹配的回调地址，不允许包含 URL 片段。
+      allowed_scopes: 允许的授权范围
+      access_policy_title: 准入策略
+      access_policy_enabled: 启用准入策略
+      access_policy_help: 启用后，用户必须满足这些规则，该客户端才能获得授权码或继续使用已有令牌。
+      policy_require_email_confirmed: 要求邮箱已验证
+      policy_block_suspended: 拦截被封禁用户
+      policy_min_discussion_count: 最少主题数
+      policy_min_comment_count: 最少回复数
+      policy_min_account_age_days: 最少注册天数
+      policy_last_seen_within_days: 最近活跃天数内
+      policy_min_trust_level: 最低信任等级
+      policy_blank_placeholder: 留空则不限制
+      create_client: 创建客户端
+      save_client: 保存客户端
+      saving: 保存中...
+    confirm:
+      reset_secret: 确定要重置该客户端密钥并撤销已有令牌吗？
+      delete_client: 确定要删除该客户端并撤销它的全部令牌吗？
+      revoke_authorization: 确定要撤销该用户授权及相关令牌吗？
+    errors:
+      request_failed: 请求失败。
+      client_not_found: 客户端不存在。
+      client_name_required: 请填写客户端名称。
+      redirect_uri_required: 请至少填写一个回调地址。
+      invalid_redirect_uri: "回调地址无效：{uri}"
+      redirect_uri_scheme: 回调地址必须使用 http 或 https。
+      redirect_uri_fragment: 回调地址不能包含 URL 片段。
+      invalid_url: "URL 无效：{url}"
+      revoke_authorization_required: 缺少 client_id 或 user_id。
+      token_required: 缺少 token。
+      application_name_required: 请填写应用名称。
+      application_description_required: 请填写应用介绍。
+      review_note_required: 请填写审核理由。
+      application_not_pending: 该申请已不在待审核状态。
+      application_redirect_uri_invalid: "应用回调地址无效：{uri}"
+      application_homepage_invalid: 应用主页必须是有效的 HTTPS 地址。
+    user_fallback: "用户 #{id}"
+    scopes:
+      openid: OpenID Connect 登录
+      profile: 标准资料声明
+      email: 标准邮箱声明
+      user_read: 基本资料
+      user_email: 邮箱地址
+      user_stats: 活跃数据
+      user_moderation: 管理状态
+      user_trust: 信任等级
+    access_policy:
+      enabled_badge: 已启用准入策略
+    permissions:
+      submit_application: 提交 OAuth 应用申请
+      manage_applications: 审核 OAuth 应用申请
+      manage_clients: 管理全部 OAuth 客户端
+      view_audit_log: 查看 OAuth 审计日志
+      manage_authorizations: 管理 OAuth 授权和令牌
+    applications:
+      title: OAuth 应用审核
+      description: 审核用户申请后再发放 OAuth 凭证。
+      pending: 待审核
+      approved: 已通过
+      rejected: 已拒绝
+      withdrawn: 已撤回
+      cancelled: 已取消
+      approve: 通过
+      reject: 拒绝
+      review: 审核
+      view: 查看
+      reopen: 重新审核
+      cancel: 取消
+      none: 当前筛选条件下没有申请。
+      search_placeholder: 应用名称或用户名
+      confirm_approve: 确定通过该申请并创建客户端吗？
+      reject_reason: 请输入拒绝理由：
+      secret_notice: 客户端密钥：
+      open: 审核申请
+      audit_logs: 审计日志
+      detail: 申请详情
+      created_at: 提交时间
+      requested_scopes: 申请权限范围
+      review_note: 审核备注
+      audit_history: 申请历史
+      no_history: 暂无历史记录。
+      confirm_reject: 确认拒绝
+      confirm_cancel: 确定取消该申请吗？
+      confirm_reopen: 确定重新进入审核吗？
+      approval_options: 审核选项
+      approved_scopes: 允许的权限范围
+      back_to_applications: 返回申请列表
+    audit:
+      title: OAuth 审计日志
+      description: 查看授权中心操作记录。
+      time: 时间
+      action: 动作
+      target: 目标
+      actor: 操作者
+  forum:
+    title: 授权中心
+    description: 管理连接到论坛账号的应用。
+    nav: 授权中心
+    new_application: 申请应用接入
+    cancel: 取消
+    my_applications: 我的应用接入
+    my_clients: 我的客户端
+    no_clients: 暂无已通过审核的客户端。
+    enabled: 已启用
+    disabled: 已停用
+    enable: 启用
+    disable: 停用
+    reset_secret: 重置密钥
+    confirm_reset_secret: 确定重置密钥并撤销现有令牌吗？
+    no_applications: 你还没有提交应用申请。
+    eyebrow: 开发者接入
+    overview:
+      applications: 应用申请
+      pending: 审核中
+      approved: 已通过
+    status:
+      pending: 审核中
+      approved: 已通过
+      rejected: 未通过
+      withdrawn: 已撤回
+      cancelled: 已取消
+    loading: 加载中...
+    submitting: 提交中...
+    submit: 提交申请
+    view_credentials: 查看客户端凭证
+    client_id: "客户端 ID："
+    client_secret: "客户端密钥："
+    secret_unavailable: 客户端密钥已经查看过；如果忘记，请执行重置。
+    withdraw: 撤回
+    confirm_withdraw: 确定撤回该申请吗？
+    request_failed: 请求失败。
+    directory:
+      title: 已接入应用
+      all: 全部
+      empty: 当前筛选下暂无应用。
+      previous: 上一页
+      page: 第 {page} / {pages} 页
+      next: 下一页
+    notification:
+      submitted: 新的 OAuth 应用申请：{application}
+      reviewed: 应用“{application}”已{status}。
+      submitted_setting: 新 OAuth 应用申请
+      reviewed_setting: OAuth 应用审核结果
+    form:
+      title: 新建应用申请
+      name: 应用名称
+      description: 应用介绍
+      description_help: 填写应用信息和精确的回调地址。
+      homepage_url: 应用主页
+      application_note: 申请说明
+      redirect_uris: 回调地址
+      redirect_help: 每行填写一个精确匹配的 HTTPS 回调地址。
+    page_title:
+      login_required: 需要登录
+      invalid_request: OAuth 请求无效
+      access_denied: 无法授权
+      authorize: 授权 {client}
+    login:
+      title: 需要登录
+      message: 请先登录该论坛，然后重新打开授权请求。
+      open_forum: 打开论坛
+    authorize:
+      signed_in_as: 当前登录用户为 {user}。该应用正在请求访问你的账号。
+      subtitle: 请求访问你的 {forum} 账户
+      account_caption: 以 {user} 的身份授权
+      app_info_title: 应用信息
+      homepage_label: 主页
+      application_label: 应用
+      permissions_title: 将获取以下权限
+      approve: 授权
+      deny: 拒绝
+    error:
+      invalid_request: OAuth 请求无效
+      response_type: 仅支持 response_type=code。
+      unknown_client: 客户端不存在或已禁用。
+      redirect_uri_required: 缺少 redirect_uri。
+      redirect_uri_not_registered: redirect_uri 未在该客户端中登记。
+      state_required: 缺少 state。
+      access_denied: 无法授权
+  access_policy:
+    failures:
+      email_confirmed: 你的邮箱地址必须先完成验证。
+      suspended: 你的账号当前已被封禁。
+      min_discussion_count: 你的主题数至少需要达到 {count}。
+      min_comment_count: 你的回复数至少需要达到 {count}。
+      min_account_age_days: 你的账号注册时间至少需要满 {days} 天。
+      last_seen_within_days: 你需要在最近 {days} 天内活跃过。
+      min_trust_level: 你的信任等级至少需要达到 {level}。
+  errors:
+    unknown_scope: "未知授权范围：{scope}"
+    scope_not_allowed: "该客户端不允许请求此授权范围：{scope}"
+    openid_required: 请求 OpenID Connect 范围时必须包含 openid。
+  scopes:
+    openid: 使用 OpenID Connect 登录
+    profile: 读取标准资料声明
+    email: 读取标准邮箱声明
+    user_read: 读取基本资料
+    user_email: 读取邮箱地址
+    user_stats: 读取公开活跃数据
+    user_moderation: 读取管理状态
+    user_trust: 读取已安装的信任等级

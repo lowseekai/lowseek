@@ -1,0 +1,331 @@
+{
+    "name": "flarum/flarum",
+    "description": "Delightfully simple forum software.",
+    "type": "project",
+    "keywords": [
+        "forum",
+        "discussion"
+    ],
+    "homepage": "https://flarum.org/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Flarum",
+            "email": "info@flarum.org",
+            "homepage": "https://flarum.org/team"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/flarum/core/issues",
+        "source": "https://github.com/flarum/flarum",
+        "docs": "https://docs.flarum.org/"
+    },
+    "require": {
+        "doingfb/flarum-red-packet": "2.0.0",
+        "ekumanov/flarum-ext-forum-widgets": "dev-main",
+        "ffans/bbcode-studio": "v2.0.0-beta.1",
+        "ffans/lang-simplified-chinese": "2.x-dev",
+        "flarum-lang/chinese-simplified": "2.x-dev",
+        "flarum/approval": "*",
+        "flarum/audit": "*",
+        "flarum/bbcode": "*",
+        "flarum/core": "^2.0.0-rc.8",
+        "flarum/emoji": "*",
+        "flarum/flags": "*",
+        "flarum/gdpr": "*",
+        "flarum/lang-english": "*",
+        "flarum/likes": "*",
+        "flarum/lock": "*",
+        "flarum/markdown": "*",
+        "flarum/mentions": "*",
+        "flarum/messages": "*",
+        "flarum/nicknames": "*",
+        "flarum/realtime": "*",
+        "flarum/statistics": "*",
+        "flarum/sticky": "*",
+        "flarum/subscriptions": "*",
+        "flarum/suspend": "*",
+        "flarum/tags": "*",
+        "flectar/flarum-fancybox": "3.0.0-beta.1",
+        "flectar/flarum-turnstile": "2.0.0-rc.3",
+        "fof/analytics": "^2.0@beta",
+        "fof/ban-ips": "^2.0@beta",
+        "fof/best-answer": "^2.0@beta",
+        "fof/bookmarks": "^2.0@RC",
+        "fof/default-user-preferences": "^2.0@beta",
+        "fof/discussion-views": "*",
+        "fof/disposable-emails": "^2.0@beta",
+        "fof/filter": "^2.0@beta",
+        "fof/first-post-approval": "^2.0@beta",
+        "fof/follow-tags": "^2.0@beta",
+        "fof/forum-widgets-core": "2.0.0-beta.3",
+        "fof/github-autolink": "^2.0@RC",
+        "fof/ignore-users": "^2.0@beta",
+        "fof/links": "^2.0@RC",
+        "fof/merge-discussions": "^2.0@beta",
+        "fof/oauth": "^2.0@beta",
+        "fof/pages": "^2.0@beta",
+        "fof/prevent-necrobumping": "^2.0@beta",
+        "fof/reactions": "^2.0@beta",
+        "fof/redis": "^2.0@beta",
+        "fof/sentry": "^2.0@beta",
+        "fof/sitemap": "^3.0@beta",
+        "fof/subscribed": "^2.0@beta",
+        "fof/upload": "^2.0@beta",
+        "fof/user-bio": "^2.0@beta",
+        "forumaker/magicbb": "^2.5",
+        "huseyinfiliz/leaderboard": "dev-point-system-integration",
+        "huseyinfiliz/show-password": "dev-fix/password-eye-position",
+        "justoverclock/flarum-ext-purify": "dev-main",
+        "justoverclock/flarum-ext-welcomebox": "dev-feature/remove-welcome-actions-stats",
+        "league/flysystem-aws-s3-v3": "^3.35.3",
+        "linkrobins/discussion-banners": "2.0.2",
+        "linkrobins/referral": "dev-referral-points-invite-codes",
+        "litalino/flarum-title-content-length": "dev-flarum-2.x-compat",
+        "lowseekai/flarum-advertising": "dev-main",
+        "lowseekai/flarum-content-risk-fee": "dev-main",
+        "lowseekai/flarum-ext-money-rewards": "dev-main",
+        "lowseekai/flarum-point-redempt": "dev-main",
+        "lowseekai/flarum-raffle-ticket": "dev-main",
+        "lowseekai/oauth-connect": "*@dev",
+        "nodeloc/flarum-ext-friend-link": "dev-flarum-2.x",
+        "nodeloc/flarum-ext-read-permission": "dev-flarum-2.x",
+        "nodeloc/flarum-ext-signature": "dev-feat/flarum-2-support",
+        "nodeloc/flarum-ext-split-view": "dev-flarum-2.x",
+        "nodeloc/flarum-ignore-hidden-tags": "dev-feat/flarum-2-support",
+        "nodeloc/lottery": "dev-flarum-2.x",
+        "peopleinside/automore": "2.1.2",
+        "ramon/chat": "v0.1.15",
+        "ramon/point-system": "dev-main",
+        "resofire/menu-control": "^2.2",
+        "xypp/flarum-trust-levels": "dev-flarum-2-compat",
+        "ziiven/flarum-pay-to-see": "dev-main"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "name": "lowseekai-content-risk-fee",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-content-risk-fee.git"
+        },
+        {
+            "name": "money-rewards",
+            "type": "path",
+            "url": "packages/flarum-ext-money-rewards",
+            "options": {
+                "symlink": false
+            }
+        },
+        {
+            "name": "lowseekai-purify",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-purify.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-point-redempt",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-point-redempt.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-welcomebox",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-welcomebox.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-pay-to-see",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-pay-to-see.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-raffle-ticket",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-raffle-ticket.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-advertising",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-advertising.git",
+            "no-api": true
+        },
+        {
+            "name": "signature-fork",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-signature.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-friend-link",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-friend-link.git",
+            "no-api": true
+        },
+        {
+            "name": "red-packet",
+            "type": "path",
+            "url": "packages/doingfb-red-packet",
+            "options": {
+                "symlink": false
+            }
+        },
+        {
+            "name": "lowseekai-trust-levels",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-trust-levels",
+            "no-api": true
+        },
+        {
+            "name": "read-permission",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-read-permission.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-referral-local",
+            "type": "path",
+            "url": "packages/referral",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "linkrobins/referral": "dev-referral-points-invite-codes"
+                }
+            }
+        },
+        {
+            "name": "lowseekai-title-content-length",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-title-content-length.git",
+            "no-api": true
+        },
+        {
+            "name": "trust-levels",
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/lowseekai/flarum-trust-levels.git"
+        },
+        {
+            "name": "lowseekai-leaderboard",
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/lowseekai/leaderboard.git"
+        },
+        {
+            "name": "ramon-point-system",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/point-system.git",
+            "no-api": true
+        },
+        {
+            "name": "nodeloc-lottery",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-lottery.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseek-point-system",
+            "type": "package",
+            "package": {
+                "name": "ramon/point-system",
+                "version": "dev-main",
+                "dist": {
+                    "url": "https://github.com/lowseekai/point-system/archive/e9d268e9995946a9471fe5aa3b403bbf52111cb5.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/lowseekai/point-system.git",
+                    "type": "git",
+                    "reference": "e9d268e9995946a9471fe5aa3b403bbf52111cb5"
+                },
+                "require": {
+                    "flarum/core": "^2.0.0"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Ramon\\PointSystem\\": "src/"
+                    }
+                },
+                "type": "flarum-extension",
+                "extra": {
+                    "flarum-extension": {
+                        "title": "Point System",
+                        "category": "feature",
+                        "icon": {
+                            "image": "icon.svg",
+                            "backgroundColor": "#fff"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "forum-widgets",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-forum-stats-widget.git",
+            "no-api": true
+        },
+        {
+            "name": "show-password-fork",
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/lowseekai/show-password.git"
+        },
+        {
+            "name": "split-view-fork",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/flarum-ext-split-view.git",
+            "no-api": true
+        },
+        {
+            "name": "ignore-hidden-tags",
+            "type": "package",
+            "package": {
+                "name": "nodeloc/flarum-ignore-hidden-tags",
+                "version": "dev-feat/flarum-2-support",
+                "description": "Let select group ignore hidden tags",
+                "type": "flarum-extension",
+                "license": "MIT-enna",
+                "dist": {
+                    "url": "https://codeload.github.com/lowseekai/flarum-ignore-hidden-tags/zip/d3a4509",
+                    "type": "zip"
+                },
+                "require": {
+                    "flarum/core": "^2.0.0-rc.8",
+                    "flarum/tags": "^2.0.0-rc.8"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Nodeloc\\IgnoreHiddenTags\\": "src/"
+                    }
+                },
+                "extra": {
+                    "flarum-extension": {
+                        "title": "Ignore Hidden Tags",
+                        "category": "",
+                        "icon": {
+                            "name": "fas fa-eye",
+                            "color": "#238c59",
+                            "backgroundColor": "#fff"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "lowseekai-oauth-connect",
+            "type": "path",
+            "url": "packages/lowseekai/oauth-connect",
+            "options": {
+                "symlink": false
+            }
+        }
+    ]
+}

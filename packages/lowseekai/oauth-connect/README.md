@@ -1,0 +1,184 @@
+# OAuth Connect
+
+OAuth Connect turns a Flarum forum into an OAuth2 authorization server.
+
+This is a Flarum 2.x provider extension for `lowseekai/oauth-connect`. It is designed as a reusable Flarum extension, so another Flarum forum can install the same package and become its own OAuth2 authorization center.
+
+## Supported flows
+
+- Authorization Code grant
+- Refresh Token grant with refresh token rotation
+- Bearer token UserInfo endpoint
+- OpenID Connect discovery, JWKS, and RS256 ID tokens
+
+Not included in this version:
+
+- PKCE
+- Implicit grant
+- Password grant
+- Client credentials grant
+- Dynamic client registration is available through the Authorization Center after administrator approval.
+
+## Endpoints
+
+Use the forum base URL for OAuth endpoints:
+
+- OpenID discovery: `/.well-known/openid-configuration`
+- JWKS: `/.well-known/jwks.json`
+- Authorization: `/oauth2/authorize`
+- Token: `/oauth2/token`
+
+Use the API base URL for UserInfo endpoints:
+
+- UserInfo: `/api/oauth/user`
+- UserInfo alias: `/api/user`
+
+## Scopes
+
+OpenID Connect clients can request standard scopes:
+
+- `openid`: request an ID token
+- `profile`: standard profile claims
+- `email`: standard email claims
+
+OIDC must also be enabled for the client in the admin panel. Existing OAuth2 clients remain non-OIDC unless this switch is enabled.
+
+- `user.read`: basic profile
+- `user.email`: email address and email confirmation state
+- `user.stats`: joined date, last seen date, discussion count, comment count
+- `user.moderation`: suspended/silenced state
+- `user.trust`: trust level when the local forum exposes that user attribute
+
+`user.read` is always included.
+
+## Access policy
+
+Each OAuth2 client can optionally enable an access policy in the admin panel. This policy is evaluated by the forum before a client receives an authorization code and again when tokens are exchanged, refreshed, or used against the UserInfo endpoint.
+
+Available rules include:
+
+- require confirmed email
+- block suspended users
+- minimum discussion count
+- minimum comment count
+- minimum account age in days
+- require recent activity within a configured number of days
+- minimum trust level when the local forum exposes that user attribute
+
+Scopes control which user fields a client may read. Access policies control whether a forum user is allowed to authorize or continue using that client.
+
+## Admin
+
+After enabling the extension, open the Flarum admin panel and go to the OAuth Connect extension page. From there an administrator can:
+
+- create OAuth2 clients
+- edit redirect URIs, allowed scopes, access policies, and enabled status
+- reset client secrets
+- revoke client authorizations
+- delete clients
+
+Registered users can open the forum's Authorization Center to submit an application. Administrators can review, approve, or reject applications from the dedicated review page. Existing administrator-created clients remain approved and keep their original credentials and redirect URIs.
+
+Client secrets are stored with `password_hash()` and only shown once when created or reset.
+
+The authorization center also uses a dedicated Sodium key to temporarily encrypt a newly approved client's one-time Secret before it is claimed. Configure a stable Base64-encoded 32-byte value as `oauth_connect.secret_key` in the Flarum `config.php` (or the equivalent protected runtime configuration) before approving applications. Keep this key backed up and do not rotate it casually: changing it makes any unclaimed one-time Secrets undecipherable. Existing client Secret hashes are not affected by this key.
+
+## Installation
+
+Install from Packagist after this package has been submitted:
+
+```sh
+composer require lowseekai/oauth-connect:^0.1
+php flarum extension:enable lowseekai-oauth-connect
+php flarum migrate
+php flarum cache:clear
+php flarum assets:publish
+```
+
+If you install before the package is available on Packagist, add the GitHub repository first:
+
+```sh
+composer config repositories.lowseekai-oauth-connect vcs https://github.com/lowseekai/oauth-connect.git
+composer require lowseekai/oauth-connect:^0.1
+php flarum extension:enable lowseekai-oauth-connect
+php flarum migrate
+php flarum cache:clear
+php flarum assets:publish
+```
+
+For Docker Compose deployments, run the same commands inside the Flarum service:
+
+```sh
+docker compose run --rm flarum composer require lowseekai/oauth-connect:^0.1
+docker compose run --rm flarum php flarum extension:enable lowseekai-oauth-connect
+docker compose run --rm flarum php flarum migrate
+docker compose run --rm flarum php flarum cache:clear
+docker compose run --rm flarum php flarum assets:publish
+```
+
+Update an existing installation:
+
+```sh
+composer update lowseekai/oauth-connect --with-dependencies
+php flarum migrate
+php flarum cache:clear
+php flarum assets:publish
+```
+
+## Troubleshooting
+
+If Composer fails before installing this extension with an error like this:
+
+```text
+The "https://flarum.org/composer/packages.json" file could not be downloaded (HTTP/2 404)
+```
+
+the Flarum installation has an obsolete Composer repository configured. Remove the `https://flarum.org/composer` repository from the forum's root `composer.json`, then run the install command again.
+
+For Docker Compose deployments, this command removes only that obsolete repository entry:
+
+```sh
+docker compose run --rm flarum php -r '$f="composer.json"; $j=json_decode(file_get_contents($f), true); $j["repositories"]=array_values(array_filter($j["repositories"] ?? [], function ($r) { return !is_array($r) || ($r["url"] ?? "") !== "https://flarum.org/composer"; })); file_put_contents($f, json_encode($j, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).PHP_EOL);'
+```
+
+Then retry:
+
+```sh
+docker compose run --rm flarum composer require lowseekai/oauth-connect:^0.1
+```
+
+## Development installation
+
+For local development, add this repository as a path repository in a Flarum installation and require the same package name:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/lowseekai/oauth-connect",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+}
+```
+
+Then run:
+
+```sh
+composer require lowseekai/oauth-connect:*@dev
+php flarum extension:enable lowseekai-oauth-connect
+php flarum migrate
+php flarum cache:clear
+```
+
+## Security notes
+
+- Redirect URI matching is exact.
+- `state` is required by default.
+- Authorization codes are one-time use.
+- Access tokens expire after 2 hours by default.
+- Refresh tokens expire after 30 days by default and rotate on use.
+- Bearer token authentication is only applied to `/api/oauth/user` and `/api/user`.

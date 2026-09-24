@@ -1,0 +1,15 @@
+{
+    "name": "@lowseekai/money-rewards",
+    "private": true,
+    "dependencies": {
+        "flarum-tsconfig": "^2.0.0",
+        "flarum-webpack-config": "^3.0.3",
+        "typescript": "^6.0.3",
+        "webpack": "^5.110.3",
+        "webpack-cli": "^7.2.3"
+    },
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "build": "webpack --mode production"
+    }
+}

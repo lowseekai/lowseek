@@ -1,0 +1,46 @@
+{
+    "name": "lowseekai/flarum-ext-money-rewards",
+    "description": "Transfer points to other users through post rewards",
+    "keywords": [
+        "flarum",
+        "money",
+        "points"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^2.0.0-rc.8",
+        "ramon/point-system": "dev-main"
+    },
+    "authors": [
+        {
+            "name": "Clark Winkelmann",
+            "homepage": "https://clarkwinkelmann.com/",
+            "email": "clark.winkelmann@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/lowseekai/flarum-ext-money-rewards",
+        "forum": "https://discuss.flarum.org/d/31844"
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "ClarkWinkelmann\\MoneyRewards\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "id": "lowseekai-money-rewards",
+            "title": "Point Rewards",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-coins",
+                "backgroundColor": "#684ba6",
+                "color": "#fff"
+            }
+        }
+    }
+}

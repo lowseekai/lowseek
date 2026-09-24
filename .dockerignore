@@ -1,0 +1,15 @@
+.env
+config.php
+vendor/
+storage/*
+!storage/.gitkeep
+public/assets/*
+!public/assets/.gitkeep
+bootstrap/cache/*
+!bootstrap/cache/.gitkeep
+.git/
+node_modules/
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz

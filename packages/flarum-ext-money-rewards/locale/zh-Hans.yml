@@ -1,0 +1,43 @@
+lowseekai-money-rewards:
+    admin:
+        settings:
+            preselection: 预设积分金额（用英文逗号分隔，可选）
+            min: 自定义打赏的最低积分
+            max: 自定义打赏的最高积分
+        permissions:
+            seeMoneyRewardHistory: 查看其他用户的积分打赏记录
+            rewardWithMoney: 使用积分打赏其他用户
+            customAmounts: 自定义积分打赏金额
+            createMoney: 在打赏时直接创建积分
+    forum:
+        modal:
+            title: 打赏帖子
+            targetPrefix: '给第 {number} 楼（'
+            targetSuffix: '）打赏'
+            optionCustom: 自定义金额
+            balance: '你的积分余额：{amount}'
+            label:
+                custom: 自定义积分金额
+                create: 直接创建积分，不扣除我的余额
+                comment: 留言（公开）
+            submit: 发送打赏
+            success: 积分打赏已发送给帖子作者！
+        profile:
+            nav: 积分打赏
+            title: 积分打赏
+        post:
+            action: 使用积分打赏
+            disallowedOwn: 不能给自己的帖子打赏。
+            disallowedOther: 不能给该帖子打赏，可能是作者匿名或账号已删除。
+            section: 积分打赏
+        record:
+            from: 来自
+            to: 发送给
+            post: '用于讨论“{title}”中的<a>第 {number} 楼</a>'
+            comment: '留言：'
+    api:
+        error:
+            invalidAmount: 积分金额无效。
+            notEnoughFunds: 积分余额不足。
+            invalidRecipient: 该帖子不能接收打赏。
+            systemDisabled: 积分系统当前已关闭。

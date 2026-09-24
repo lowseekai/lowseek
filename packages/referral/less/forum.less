@@ -1,0 +1,342 @@
+@import "qr.less";
+
+// Referral profile tab + sign-up + user-card styling. Extracted from inline
+// style attributes so forums can theme these without !important and so the
+// rules live alongside the extension's other styles.
+
+.ReferralSignup-codeInput {
+  letter-spacing: 3px;
+  font-family: monospace;
+
+  // While the field is empty its placeholder is the only label anyone gets who
+  // has hidden the real ones with custom CSS, so it should read like every
+  // other placeholder in the sign-up form rather than like a code. The moment
+  // there is something to show, the monospace and spacing come back for the
+  // code itself, which is what they are for.
+  //
+  // Asked for on discuss.flarum.org d/39203 #52.
+  &:placeholder-shown {
+    letter-spacing: normal;
+    font-family: inherit;
+  }
+}
+
+.ReferralSignup-getInvite {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  text-align: center;
+
+  a {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+}
+
+// `text-transform: uppercase` used to sit on the input above. It never reached
+// a real code, because every path that sets the value already uppercases it in
+// JS (the oninput handler and the ?ref= prefill both do
+// `.toUpperCase().replace(/[^A-Z0-9]/g, '')`). All it did was shout the
+// placeholder as "E.G. K7XM2QNP", so it is gone rather than reset below.
+
+.ReferralProfile {
+  padding: 0 16px;
+
+  &-section {
+    margin-bottom: 24px;
+  }
+
+  &-total {
+    margin-top: 24px;
+  }
+
+  &-heading {
+    font-size: calc(1rem * var(--lr-text-scale, 1));
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &-note {
+    font-size: calc(0.85rem * var(--lr-text-scale, 1));
+    color: var(--muted-color);
+  }
+
+  &-help {
+    font-size: calc(0.85rem * var(--lr-text-scale, 1));
+    color: var(--muted-color);
+    margin-bottom: 8px;
+  }
+
+  &-codeRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &-summary,
+  &-purchase {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  &-channelGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  &-channel {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--control-bg);
+    border-radius: var(--border-radius, 4px);
+    background: var(--body-bg);
+  }
+
+  &-channel--group {
+    border-top: 3px solid var(--primary-color);
+  }
+
+  &-channel--purchase {
+    border-top: 3px solid var(--secondary-color, var(--control-bg));
+  }
+
+  &-channelHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &-channelHeader .icon {
+    color: var(--primary-color);
+  }
+
+  &-channel--purchase &-channelHeader .icon {
+    color: var(--secondary-color, var(--muted-color));
+  }
+
+  &-channelTitle {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &-channelBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  &-channelHelp {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.88rem;
+  }
+
+  &-channelMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    color: var(--muted-color);
+    font-size: 0.82rem;
+  }
+
+  &-purchase {
+    padding-top: 12px;
+    border-top: 1px solid var(--control-bg);
+  }
+
+  &-codeItem {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--control-bg);
+  }
+
+  &-codeTableCard {
+    margin-top: 12px;
+    border: 1px solid var(--control-bg);
+    border-radius: var(--border-radius, 4px);
+    overflow: hidden;
+  }
+
+  &-codeTableHeader,
+  &-codeTableRow {
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) minmax(100px, 1fr) minmax(80px, 0.8fr) minmax(150px, 1.4fr) minmax(210px, 2fr);
+    gap: 12px;
+    align-items: center;
+    padding: 14px 16px;
+  }
+
+  &-codeTableHeader {
+    background: var(--control-bg);
+    color: var(--muted-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  &-codeTableRow {
+    border-top: 1px solid var(--control-bg);
+  }
+
+  &-codeTableCell {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &-cellLabel {
+    display: none;
+    color: var(--muted-color);
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex: 0 0 72px;
+  }
+
+  &-codeTableCell--code {
+    min-width: 0;
+  }
+
+  &-codeTableCell--details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &-codeUses {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+  }
+
+  &-codeTableCell--actions {
+    min-width: 0;
+  }
+
+  &-codeMeta,
+  &-codeDetails,
+  &-codeActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  &-codeDetails {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  &-codeActions {
+    margin-top: 10px;
+  }
+
+  &-badge,
+  &-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: var(--border-radius, 4px);
+    background: var(--control-bg);
+    font-size: 0.8rem;
+  }
+
+  &-status--used,
+  &-status--expired {
+    color: var(--muted-color);
+  }
+
+  &-status--available {
+    color: var(--success-color, #2d8a57);
+  }
+
+  &-code {
+    font-size: calc(1.15rem * var(--lr-text-scale, 1));
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-family: monospace;
+    color: var(--primary-color);
+  }
+
+  &-totalHeading {
+    font-size: calc(1rem * var(--lr-text-scale, 1));
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  &-count {
+    font-size: calc(2rem * var(--lr-text-scale, 1));
+    font-weight: 800;
+    color: var(--primary-color);
+  }
+
+  &-empty {
+    color: var(--muted-color);
+    font-size: calc(0.9rem * var(--lr-text-scale, 1));
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ReferralProfile {
+    &-channelGrid {
+      grid-template-columns: 1fr;
+    }
+
+    &-codeTableHeader {
+      display: none;
+    }
+
+    &-codeTableRow {
+      display: block;
+      padding: 14px;
+    }
+
+    &-codeTableCell {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 7px 0;
+    }
+
+    &-codeTableCell--details {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &-codeTableCell--actions {
+      display: block;
+      padding-bottom: 0;
+    }
+
+    &-cellLabel {
+      display: inline-block;
+    }
+
+    &-codeActions {
+      margin-top: 8px;
+    }
+  }
+}
+
+.ReferralCard-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .ReferralCard-icon {
+    color: var(--primary-color);
+  }
+
+  .ReferralCard-text {
+    font-weight: 600;
+  }
+}

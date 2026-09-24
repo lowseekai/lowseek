@@ -1,0 +1,45 @@
+{
+    "name": "doingfb/flarum-red-packet",
+    "version": "2.0.0",
+    "description": "Point-based red packets for Flarum 2.",
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^2.0.0",
+        "ramon/point-system": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Doingfb\\RedPacket\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "DoingFB Red Packet",
+            "category": "feature",
+            "id": "doingfb-red-packet",
+            "icon": {
+                "name": "fas fa-envelope-open-text",
+                "color": "#ffffff",
+                "backgroundColor": "#dc2626"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "css": true
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/point-system"
+        }
+    ]
+}

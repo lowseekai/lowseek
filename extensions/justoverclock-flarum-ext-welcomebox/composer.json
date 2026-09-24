@@ -1,0 +1,57 @@
+{
+    "name": "justoverclock/flarum-ext-welcomebox",
+    "description": "Add a Welcome Box for flarum, different for guest and registered users.",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^v2.0.0-beta.1"
+    },
+    "authors": [
+        {
+            "name": "Marco Colia",
+            "email": "info@justoverclock.it",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Justoverclock\\WelcomeBox\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "WelcomeBox",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-user-tie",
+                "backgroundColor": "green",
+                "color": "white"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": false,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "frontendTesting": false,
+                "backendTesting": false,
+                "phpstan": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

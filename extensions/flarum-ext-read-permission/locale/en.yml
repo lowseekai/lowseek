@@ -1,0 +1,26 @@
+nodeloc-read-permission:
+  admin:
+    readPermission: Read permission level
+    readPermissionHelper: Enter a number. The default is 0, which allows everyone to read.
+
+  forum:
+    modal:
+      add_title: Set read permission
+      edit_title: Edit read permission
+      readPermission_placeholder: Choose the minimum group level
+      no_groups: No groups available
+      submit: Confirm
+    composer_discussion:
+      add_readPermission: Set read permission
+      edit_readPermission: Edit read permission
+      hint: Read permission set
+      editing_hint: You are editing the read permission. Continue entering the discussion content.
+    tooltip:
+      badge: "Required group: {group}"
+      badge-unknown: A required user group is needed to read this discussion
+
+    read-failed: Read permission required
+    read-failed-detail: "You do not have permission to read this discussion. Required group: {group}"
+    read-failed-detail-unknown: "You do not have permission to read this discussion. Join the required user group first."
+    low-permission: "You do not have enough read permission (required group: {group})."
+    low-permission-unknown: You do not have enough read permission (join the required user group first).

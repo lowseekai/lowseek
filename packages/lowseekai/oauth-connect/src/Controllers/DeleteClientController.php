@@ -1,0 +1,40 @@
+<?php
+
+namespace Lowseekai\OAuthConnect\Controllers;
+
+use Flarum\Http\RequestUtil;
+use Lowseekai\OAuthConnect\Repositories\ClientRepository;
+use Lowseekai\OAuthConnect\Support\Translation;
+use Lowseekai\OAuthConnect\Support\AuthorizationCenterAccess;
+use Laminas\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\JsonResponse;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+class DeleteClientController implements RequestHandlerInterface
+{
+    private $clients;
+    private $translation;
+
+    public function __construct(ClientRepository $clients, Translation $translation)
+    {
+        $this->clients = $clients;
+        $this->translation = $translation;
+    }
+
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        AuthorizationCenterAccess::assert(RequestUtil::getActor($request), 'oauthConnect.manageClients');
+
+        $client = $this->clients->find((string) ($request->getQueryParams()['clientId'] ?? ''));
+
+        if (! $client) {
+            return new JsonResponse(['error' => $this->translation->trans('admin.errors.client_not_found', [], 'Client not found.')], 404);
+        }
+
+        $this->clients->delete($client);
+
+        return new EmptyResponse(204);
+    }
+}

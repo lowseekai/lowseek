@@ -1,0 +1,161 @@
+services:
+  flarum:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lowseek_flarum
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "${FLARUM_BIND_IP:-127.0.0.1}:${FLARUM_HTTP_PORT:-18081}:80"
+    environment:
+      TZ: "${TZ:-Asia/Shanghai}"
+    volumes:
+      - ./config.php:/var/www/html/config.php
+      - ./extend.php:/var/www/html/extend.php:ro
+      - ./js:/var/www/html/js:ro
+      - ./storage:/var/www/html/storage
+      - ./public/assets:/var/www/html/public/assets
+      - ./extensions/flarum-ext-read-permission:/var/www/html/vendor/nodeloc/flarum-ext-read-permission:ro
+      - ./extensions/justoverclock-flarum-ext-welcomebox:/var/www/html/vendor/justoverclock/flarum-ext-welcomebox:ro
+
+  realtime:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lowseek_realtime
+    restart: unless-stopped
+    init: true
+    depends_on:
+      flarum:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    user: "33:33"
+    working_dir: /var/www/html
+    command: ["php", "flarum", "realtime:serve"]
+    ports:
+      - "127.0.0.1:${REALTIME_BIND_PORT:-16001}:6001"
+    environment:
+      TZ: "${TZ:-Asia/Shanghai}"
+    volumes:
+      - ./config.php:/var/www/html/config.php
+      - ./extend.php:/var/www/html/extend.php:ro
+      - ./storage:/var/www/html/storage
+      - ./public/assets:/var/www/html/public/assets
+      - ./extensions/flarum-ext-read-permission:/var/www/html/vendor/nodeloc/flarum-ext-read-permission:ro
+      - ./extensions/justoverclock-flarum-ext-welcomebox:/var/www/html/vendor/justoverclock/flarum-ext-welcomebox:ro
+
+  queue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lowseek_queue
+    restart: unless-stopped
+    init: true
+    depends_on:
+      flarum:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    user: "33:33"
+    working_dir: /var/www/html
+    command:
+      [
+        "php",
+        "flarum",
+        "queue:work",
+        "--queue=default",
+        "--sleep=3",
+        "--timeout=360",
+        "--tries=3",
+        "--no-ansi"
+      ]
+    environment:
+      TZ: "${TZ:-Asia/Shanghai}"
+    volumes:
+      - ./config.php:/var/www/html/config.php
+      - ./extend.php:/var/www/html/extend.php:ro
+      - ./storage:/var/www/html/storage
+      - ./public/assets:/var/www/html/public/assets
+      - ./extensions/flarum-ext-read-permission:/var/www/html/vendor/nodeloc/flarum-ext-read-permission:ro
+      - ./extensions/justoverclock-flarum-ext-welcomebox:/var/www/html/vendor/justoverclock/flarum-ext-welcomebox:ro
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lowseek_scheduler
+    restart: unless-stopped
+    init: true
+    depends_on:
+      flarum:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    user: "33:33"
+    working_dir: /var/www/html
+    command:
+      [
+        "sh",
+        "-c",
+        "while true; do php -d date.timezone=Asia/Shanghai flarum schedule:run --no-ansi --no-interaction; sleep 60; done"
+      ]
+    environment:
+      TZ: "${TZ:-Asia/Shanghai}"
+    volumes:
+      - ./config.php:/var/www/html/config.php
+      - ./extend.php:/var/www/html/extend.php:ro
+      - ./storage:/var/www/html/storage
+      - ./public/assets:/var/www/html/public/assets
+      - ./extensions/flarum-ext-read-permission:/var/www/html/vendor/nodeloc/flarum-ext-read-permission:ro
+      - ./extensions/justoverclock-flarum-ext-welcomebox:/var/www/html/vendor/justoverclock/flarum-ext-welcomebox:ro
+
+  mysql:
+    image: mysql:8.4.11
+    container_name: lowseek_mysql
+    restart: unless-stopped
+    command:
+      - --mysql-native-password=ON
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      TZ: "${TZ:-Asia/Shanghai}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:?set MYSQL_ROOT_PASSWORD in .env}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-lowseek_flarum}"
+      MYSQL_USER: "${MYSQL_USER:-lowseek_flarum}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:?set MYSQL_PASSWORD in .env}"
+    volumes:
+      - mysql84_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: lowseek_redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  mysql84_data:
+  redis_data:

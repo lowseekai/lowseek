@@ -1,0 +1,63 @@
+{
+    "name": "nodeloc/flarum-ext-read-permission",
+    "description": "Add configurable read-permission levels to Flarum groups and discussions.",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT-Modern-Variant",
+    "require": {
+        "flarum/core": "^2.0.0-rc.8"
+    },
+    "authors": [
+        {
+            "name": "Nodeloc",
+            "email": "james@nodeloc.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/lowseekai/flarum-ext-read-permission/issues",
+        "source": "https://github.com/lowseekai/flarum-ext-read-permission"
+    },
+    "homepage": "https://github.com/lowseekai/flarum-ext-read-permission",
+    "autoload": {
+        "psr-4": {
+            "Nodeloc\\ReadPermission\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-flarum-2.x": "2.0.x-dev"
+        },
+        "flarum-extension": {
+            "title": "ReadPermission",
+            "category": "",
+            "icon": {
+                "name": "fas fa-eye-slash",
+                "color": "#ffffff",
+                "backgroundColor": "86469C"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": true,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": false
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
