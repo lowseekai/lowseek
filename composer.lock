@@ -11654,12 +11654,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lowseekai/flarum-lottery.git",
-                "reference": "6d2e686d65e59d8e941aab944371420e91e0c7e6"
+                "reference": "b7991ba044f7289f0212bc4224626e8aa58c5f65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lowseekai/flarum-lottery/zipball/6d2e686d65e59d8e941aab944371420e91e0c7e6",
-                "reference": "6d2e686d65e59d8e941aab944371420e91e0c7e6",
+                "url": "https://api.github.com/repos/lowseekai/flarum-lottery/zipball/b7991ba044f7289f0212bc4224626e8aa58c5f65",
+                "reference": "b7991ba044f7289f0212bc4224626e8aa58c5f65",
                 "shasum": ""
             },
             "require": {
