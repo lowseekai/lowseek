@@ -87,7 +87,7 @@
         "lowseekai/flarum-ext-money-rewards": "dev-main",
         "lowseekai/flarum-point-redempt": "dev-main",
         "lowseekai/flarum-raffle-ticket": "dev-main",
-        "lowseekai/oauth-connect": "*@dev",
+        "lowseekai/oauth-connect": "v1.0.8",
         "nodeloc/flarum-ext-friend-link": "dev-flarum-2.x",
         "nodeloc/flarum-ext-read-permission": "dev-flarum-2.x",
         "nodeloc/flarum-ext-signature": "dev-feat/flarum-2-support",
@@ -149,6 +149,12 @@
             "name": "lowseekai-raffle-ticket",
             "type": "vcs",
             "url": "https://github.com/lowseekai/flarum-raffle-ticket.git",
+            "no-api": true
+        },
+        {
+            "name": "lowseekai-oauth-connect",
+            "type": "vcs",
+            "url": "https://github.com/lowseekai/oauth-connect.git",
             "no-api": true
         },
         {
@@ -317,14 +323,6 @@
                         }
                     }
                 }
-            }
-        },
-        {
-            "name": "lowseekai-oauth-connect",
-            "type": "path",
-            "url": "packages/lowseekai/oauth-connect",
-            "options": {
-                "symlink": false
             }
         }
     ]

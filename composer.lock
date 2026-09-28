@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a832c8d70386bb806fff084e2c91b8bc",
+    "content-hash": "4a671bd5fe9ad61ef05215f3b3e919e0",
     "packages": [
         {
             "name": "asispts/http-accept",
@@ -10200,13 +10200,20 @@
         },
         {
             "name": "lowseekai/oauth-connect",
-            "version": "dev-main",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lowseekai/oauth-connect.git",
+                "reference": "53bf9f229f2ef735952bcf39d09f2d16a8ae389f"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/lowseekai/oauth-connect",
-                "reference": "72a72c7176edc8cdcd2525671f3e188774453573"
+                "type": "zip",
+                "url": "https://api.github.com/repos/lowseekai/oauth-connect/zipball/53bf9f229f2ef735952bcf39d09f2d16a8ae389f",
+                "reference": "53bf9f229f2ef735952bcf39d09f2d16a8ae389f",
+                "shasum": ""
             },
             "require": {
+                "ext-sodium": "*",
                 "flarum/core": "^2.0.0-rc.8"
             },
             "require-dev": {
@@ -10243,10 +10250,7 @@
                 "issues": "https://github.com/lowseekai/oauth-connect/issues",
                 "source": "https://github.com/lowseekai/oauth-connect"
             },
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "time": "2026-09-28T05:49:27+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -17731,7 +17735,6 @@
         "lowseekai/flarum-ext-money-rewards": 20,
         "lowseekai/flarum-point-redempt": 20,
         "lowseekai/flarum-raffle-ticket": 20,
-        "lowseekai/oauth-connect": 20,
         "nodeloc/flarum-ext-friend-link": 20,
         "nodeloc/flarum-ext-read-permission": 20,
         "nodeloc/flarum-ext-signature": 20,
