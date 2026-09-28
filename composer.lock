@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "212073a742308b1e85f5399f4d2f486b",
+    "content-hash": "49ff92c0115f2e999c5c52dd45edfb23",
     "packages": [
         {
             "name": "asispts/http-accept",
@@ -10200,16 +10200,16 @@
         },
         {
             "name": "lowseekai/oauth-connect",
-            "version": "1.0.9",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lowseekai/oauth-connect.git",
-                "reference": "2beb30f045c349046930309680349929506e72b9"
+                "reference": "e6947e3175971ac35bae7f50f8b1cb40fc38b62c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lowseekai/oauth-connect/zipball/2beb30f045c349046930309680349929506e72b9",
-                "reference": "2beb30f045c349046930309680349929506e72b9",
+                "url": "https://api.github.com/repos/lowseekai/oauth-connect/zipball/e6947e3175971ac35bae7f50f8b1cb40fc38b62c",
+                "reference": "e6947e3175971ac35bae7f50f8b1cb40fc38b62c",
                 "shasum": ""
             },
             "require": {
@@ -10250,7 +10250,7 @@
                 "issues": "https://github.com/lowseekai/oauth-connect/issues",
                 "source": "https://github.com/lowseekai/oauth-connect"
             },
-            "time": "2026-09-28T08:34:29+00:00"
+            "time": "2026-09-28T08:46:50+00:00"
         },
         {
             "name": "masterminds/html5",
